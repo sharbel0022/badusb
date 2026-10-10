@@ -1,0 +1,4 @@
+[autorun]
+;Open=main.exe
+ShellExecute=main.exe
+UseAutoPlay=1
