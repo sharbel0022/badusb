@@ -1,36 +1,8 @@
-import ctypes
+
 import subprocess
-import sys
 import time
 
-# ----------------------------------------------------------------------
-# Självhöjning till admin
-# ----------------------------------------------------------------------
 
-def _is_admin():
-    try:
-        return ctypes.windll.shell32.IsUserAnAdmin() != 0
-    except Exception:
-        return False
-
-
-def _elevate():
-    ctypes.windll.shell32.ShellExecuteW(
-        None, "runas", sys.executable,
-        " ".join(f'"{a}"' for a in sys.argv),
-        None, 1
-    )
-    sys.exit(0)
-
-
-if not _is_admin():
-    print("Startar om som administratör...")
-    _elevate()
-
-
-# ----------------------------------------------------------------------
-# Resten
-# ----------------------------------------------------------------------
 
 import winreg
 import pyautogui
